@@ -1,0 +1,603 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nosotros | Eco Cojines</title>
+
+    <!-- Mismo CSS de la página principal -->
+    <link rel="stylesheet" href="css/styles.css">
+
+    <style>
+        /* ESTILOS DE NOSOTROS */
+
+        .nosotros-hero {
+            padding: 150px 0 75px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nosotros-hero h1 {
+            font-size: clamp(2.7rem, 6vw, 4.5rem);
+            margin: 15px 0;
+            color: var(--rose-500);
+        }
+
+        .nosotros-hero h1 em {
+            font-style: italic;
+        }
+
+        .nosotros-hero p {
+            max-width: 680px;
+            margin: auto;
+            line-height: 1.8;
+        }
+
+        .nosotros-card {
+            background: rgba(255,255,255,.85);
+            border: 1px solid rgba(185,80,111,.15);
+            border-radius: 25px;
+            padding: 35px;
+            box-shadow: 0 12px 35px rgba(130,70,90,.08);
+            transition: transform .35s, box-shadow .35s;
+        }
+
+        .nosotros-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 18px 40px rgba(130,70,90,.15);
+        }
+
+        .nosotros-card h2 {
+            color: var(--rose-500);
+            margin-bottom: 18px;
+            font-size: 1.7rem;
+        }
+
+        .nosotros-card p {
+            line-height: 1.85;
+            color: #66545b;
+        }
+
+        .historia {
+            display: grid;
+            grid-template-columns: 1.2fr .8fr;
+            gap: 30px;
+            align-items: stretch;
+        }
+
+        .historia__visual {
+            background: linear-gradient(145deg, #fbcfdb, #f8e8ef);
+            border-radius: 25px;
+            min-height: 320px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 30px;
+            color: #a94465;
+        }
+
+        .historia__visual .icono {
+            font-size: 90px;
+            margin-bottom: 15px;
+        }
+
+        .historia__visual h3 {
+            font-size: 1.6rem;
+        }
+
+        .grid-nosotros {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            margin-top: 35px;
+        }
+
+        .valor-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 18px;
+            margin-top: 35px;
+        }
+
+        .valor {
+            background: white;
+            padding: 25px 18px;
+            border-radius: 20px;
+            text-align: center;
+            border: 1px solid #f5d4df;
+            transition: .3s;
+        }
+
+        .valor:hover {
+            transform: translateY(-8px) rotate(-1deg);
+        }
+
+        .valor .icono {
+            font-size: 35px;
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        .valor h3 {
+            color: var(--rose-500);
+            margin-bottom: 10px;
+        }
+
+        .valor p {
+            font-size: .9rem;
+            line-height: 1.6;
+            color: #66545b;
+        }
+
+        .frase-final {
+            text-align: center;
+            padding: 55px 25px;
+            border-radius: 25px;
+            background: linear-gradient(135deg, #fbcfdb, #f8e8ef);
+            margin-top: 50px;
+        }
+
+        .frase-final h2 {
+            color: #a94465;
+            font-size: clamp(1.7rem, 4vw, 2.5rem);
+        }
+
+        .frase-final p {
+            margin-top: 15px;
+        }
+
+        /* ANIMACIONES */
+
+        .animar {
+            animation: aparecer .9s ease both;
+        }
+
+        .revelar {
+            opacity: 0;
+            transform: translateY(35px);
+            transition: opacity .8s ease, transform .8s ease;
+        }
+
+        .revelar.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @keyframes aparecer {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media(max-width: 950px) {
+            .valor-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media(max-width: 700px) {
+            .historia,
+            .grid-nosotros {
+                grid-template-columns: 1fr;
+            }
+
+            .valor-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nosotros-card {
+                padding: 25px;
+            }
+        }
+
+        @media(prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: .01ms !important;
+                transition-duration: .01ms !important;
+            }
+
+            .revelar {
+                opacity: 1;
+                transform: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- CABECERA -->
+<header class="header" id="top">
+    <div class="container header__inner">
+
+        <a class="brand" href="index.html">
+            <span class="brand__text"><em>eco</em> cojines</span>
+        </a>
+
+        <nav class="nav" id="menu">
+            <ul class="nav__list">
+                <li><a class="nav__link" href="index.html">Inicio</a></li>
+                <li><a class="nav__link" href="index.html#beneficios">Beneficios</a></li>
+                <li><a class="nav__link" href="index.html#cojines">Cojines</a></li>
+                <li><a class="nav__link" href="index.html#combos">Combos</a></li>
+                <li><a class="nav__link" href="nosotros.html">Nosotros</a></li>
+                <li><a class="nav__link" href="index.html#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+
+        <button class="burger" aria-label="Abrir menú"
+            aria-expanded="false" aria-controls="menu">
+            <span></span><span></span><span></span>
+        </button>
+
+    </div>
+</header>
+
+<main>
+
+    <!-- PRESENTACIÓN -->
+    <section class="nosotros-hero">
+        <div class="container animar">
+
+            <span class="eyebrow">Conoce nuestra esencia</span>
+
+            <h1>Más que cojines,<br>
+                creamos con <em>propósito.</em>
+            </h1>
+
+            <p>
+                Somos Eco Cojines, un emprendimiento que transforma
+                jeans reciclados en cojines únicos, demostrando que
+                los materiales que parecen no tener utilidad pueden
+                convertirse en algo especial.
+            </p>
+
+            <div class="stitch"></div>
+
+        </div>
+    </section>
+
+
+    <!-- HISTORIA / NARRATIVO DIGITAL -->
+    <section class="section section--tint">
+        <div class="container">
+
+            <div class="section__head revelar">
+                <span class="eyebrow">Nuestra historia</span>
+                <h2 class="section__title">
+                    Todo comienza con una <em>idea.</em>
+                </h2>
+                <div class="stitch"></div>
+                <p class="section__sub">
+                    Una historia de creatividad, reutilización y
+                    compromiso con el medio ambiente.
+                </p>
+            </div>
+
+            <div class="historia">
+
+                <article class="nosotros-card revelar">
+                    <h2>🧵 De un retazo a una gran idea</h2>
+
+                    <p>
+                        Eco Cojines nació como una idea de emprendimiento
+                        al observar que muchos jeans que ya no se utilizan
+                        terminan convirtiéndose en residuos. Así surgió
+                        nuestra iniciativa de darles una segunda vida,
+                        transformándolos en cojines originales y decorativos.
+                    </p>
+
+                    <p>
+                        Nuestro proyecto busca reducir el desperdicio de
+                        telas mediante la creatividad y el trabajo manual.
+                        Elaboramos cojines con diferentes combinaciones de
+                        retazos, convirtiendo cada producto en una pieza
+                        especial para decorar el hogar.
+                    </p>
+
+                    <p>
+                        A través de nuestra página web y plataformas
+                        digitales compartimos nuestros productos, novedades
+                        y avances, para conectar con las personas y demostrar
+                        que pequeñas acciones pueden generar grandes cambios.
+                    </p>
+                </article>
+
+                <div class="historia__visual revelar">
+                    <span class="icono">♻️</span>
+                    <h3>Una segunda vida para los jeans</h3>
+                    <p>
+                        Transformamos lo que otros desechan en
+                        productos útiles, creativos y llenos de estilo.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- MISIÓN Y VISIÓN -->
+    <section class="section">
+        <div class="container">
+
+            <div class="section__head revelar">
+                <span class="eyebrow">Nuestro propósito</span>
+                <h2 class="section__title">
+                    Lo que nos <em>inspira.</em>
+                </h2>
+                <div class="stitch"></div>
+            </div>
+
+            <div class="grid-nosotros">
+
+                <article class="nosotros-card revelar">
+                    <span style="font-size:40px;">🌱</span>
+
+                    <h2>Nuestra misión</h2>
+
+                    <p>
+                        Elaborar cojines creativos y decorativos a partir
+                        de jeans reciclados, ofreciendo productos únicos
+                        a personas que buscan originalidad y sostenibilidad.
+                        Lo logramos mediante el trabajo artesanal, la
+                        reutilización de materiales y la innovación en
+                        nuestros diseños.
+                    </p>
+                </article>
+
+                <article class="nosotros-card revelar">
+                    <span style="font-size:40px;">✨</span>
+
+                    <h2>Nuestra visión</h2>
+
+                    <p>
+                        Ser un emprendimiento reconocido por transformar
+                        materiales reutilizables en productos originales,
+                        inspirando a más personas a adoptar hábitos
+                        responsables y creativos con el medio ambiente.
+                    </p>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- VALORES -->
+    <section class="section section--tint">
+        <div class="container">
+
+            <div class="section__head revelar">
+                <span class="eyebrow">Nuestra esencia</span>
+
+                <h2 class="section__title">
+                    Los valores que nos <em>definen.</em>
+                </h2>
+
+                <div class="stitch"></div>
+
+                <p class="section__sub">
+                    Son los principios que orientan cada una de nuestras
+                    decisiones y acciones.
+                </p>
+            </div>
+
+            <div class="valor-grid">
+
+                <article class="valor revelar">
+                    <span class="icono">🌎</span>
+                    <h3>Responsabilidad ambiental</h3>
+                    <p>
+                        Promovemos el cuidado del planeta mediante
+                        la reutilización de jeans y telas.
+                    </p>
+                </article>
+
+                <article class="valor revelar">
+                    <span class="icono">💡</span>
+                    <h3>Creatividad</h3>
+                    <p>
+                        Creamos diseños originales aprovechando
+                        cada retazo de tela.
+                    </p>
+                </article>
+
+                <article class="valor revelar">
+                    <span class="icono">❤️</span>
+                    <h3>Compromiso</h3>
+                    <p>
+                        Trabajamos con dedicación para ofrecer
+                        productos bien elaborados.
+                    </p>
+                </article>
+
+                <article class="valor revelar">
+                    <span class="icono">🤝</span>
+                    <h3>Responsabilidad</h3>
+                    <p>
+                        Cumplimos con nuestras tareas y buscamos
+                        satisfacer a nuestros clientes.
+                    </p>
+                </article>
+
+                <article class="valor revelar">
+                    <span class="icono">⭐</span>
+                    <h3>Calidad</h3>
+                    <p>
+                        Cuidamos los detalles y acabados de cada
+                        cojín que elaboramos.
+                    </p>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- SOBRE NOSOTROS -->
+    <section class="section">
+        <div class="container">
+
+            <div class="section__head revelar">
+                <span class="eyebrow">Sobre nosotros</span>
+
+                <h2 class="section__title">
+                    Conoce a <em>Eco Cojines.</em>
+                </h2>
+
+                <div class="stitch"></div>
+            </div>
+
+            <article class="nosotros-card revelar"
+                style="text-align:center; max-width:850px; margin:auto;">
+
+                <span style="font-size:55px;">🪡</span>
+
+                <h2>Somos Eco Cojines</h2>
+
+                <p>
+                    Somos un emprendimiento dedicado a la elaboración
+                    artesanal de cojines utilizando jeans reciclados.
+                    Nuestra marca representa la unión entre creatividad,
+                    diseño y conciencia ambiental.
+                </p>
+
+                <p>
+                    Nos caracterizamos por aprovechar materiales
+                    reutilizables, crear combinaciones originales y
+                    ofrecer productos decorativos que aportan personalidad
+                    a los espacios del hogar. Cada cojín refleja nuestro
+                    compromiso con la reutilización y el valor de crear
+                    algo nuevo a partir de lo que ya existe.
+                </p>
+
+            </article>
+
+            <!-- FRASE FINAL -->
+            <div class="frase-final revelar">
+                <h2>¡Dale una segunda vida a tus jeans!</h2>
+
+                <p>
+                    En Eco Cojines creemos que reutilizar también
+                    es una forma de crear belleza.
+                </p>
+
+                <br>
+
+                <a href="index.html#cojines"
+                    class="btn btn--primary">
+                    Descubre nuestros cojines →
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+</main>
+
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="container">
+
+        <div class="footer__grid">
+
+            <div>
+                <a class="brand" href="index.html">
+                    <span class="brand__text"><em>eco</em> cojines</span>
+                </a>
+
+                <p>
+                    Cojines de jeans reciclados,
+                    hechos a mano y con mucho cariño.
+                </p>
+            </div>
+
+            <div>
+                <h4>Navega</h4>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="nosotros.html">Nosotros</a></li>
+                    <li><a href="index.html#cojines">Cojines</a></li>
+                    <li><a href="index.html#combos">Combos</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4>Contacto</h4>
+                <ul>
+                    <li>
+                        <a href="https://wa.me/51931109349">
+                            WhatsApp
+                        </a>
+                    </li>
+                    <li>
+                        <a href="index.html#contacto">
+                            Escríbenos
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="footer__bottom">
+            © 2026 Eco Cojines. Hecho con cariño.
+        </div>
+
+    </div>
+</footer>
+
+
+<!-- ANIMACIONES Y MENÚ -->
+<script>
+    // Animaciones al desplazarse por la página
+    const elementos = document.querySelectorAll('.revelar');
+
+    const observador = new IntersectionObserver((entradas) => {
+        entradas.forEach(entrada => {
+            if (entrada.isIntersecting) {
+                entrada.target.classList.add('visible');
+                observador.unobserve(entrada.target);
+            }
+        });
+    }, { threshold: 0.12 });
+
+    elementos.forEach(elemento => {
+        observador.observe(elemento);
+    });
+
+    // Menú para dispositivos móviles
+    const boton = document.querySelector('.burger');
+    const html = document.documentElement;
+
+    boton.addEventListener('click', () => {
+        const abierto = html.classList.toggle('menu-open');
+
+        boton.setAttribute('aria-expanded', abierto);
+        boton.setAttribute(
+            'aria-label',
+            abierto ? 'Cerrar menú' : 'Abrir menú'
+        );
+    });
+
+    document.querySelectorAll('.nav a').forEach(enlace => {
+        enlace.addEventListener('click', () => {
+            html.classList.remove('menu-open');
+            boton.setAttribute('aria-expanded', 'false');
+        });
+    });
+</script>
+
+</body>
+</html>
